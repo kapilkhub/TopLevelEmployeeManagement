@@ -1,6 +1,7 @@
 ﻿using EmployeeManagement.Business.Exceptions;
 using EmployeeManagement.DataAccess.Entities;
 using EmployeeManagement.Test.Fixtures;
+using EmployeeManagement.Test.TestData;
 
 namespace EmployeeManagement.Test
 {
@@ -14,12 +15,13 @@ namespace EmployeeManagement.Test
             _employeeServiceFixture = employeeServiceFixture;
         }
 
-        [Fact]
-        public async Task GiveRaise_MinimumRaiseGiven_EmployeeMinimumRaiseGivenMustBeTrue()
+        [Theory]
+        [ClassData(typeof(EmployeeServiceTestData))]
+        public async Task GiveRaise_MinimumRaiseGiven_EmployeeMinimumRaiseGivenMustBeTrue(int raiseGiven, bool expectedResult)
         {
             var internalEmployee = new InternalEmployee("Kapil", "Khubchandani", 5, 3000, false, 1);
-            await _employeeServiceFixture.EmployeeService.GiveRaiseAsync(internalEmployee, 100);
-            Assert.True(internalEmployee.MinimumRaiseGiven);
+            await _employeeServiceFixture.EmployeeService.GiveRaiseAsync(internalEmployee, raiseGiven);
+            Assert.Equal(expectedResult,internalEmployee.MinimumRaiseGiven);
         }
 
         [Fact]
