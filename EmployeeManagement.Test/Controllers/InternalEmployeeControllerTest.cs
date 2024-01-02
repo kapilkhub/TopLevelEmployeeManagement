@@ -6,11 +6,10 @@ using EmployeeManagement.MapperProfiles;
 using EmployeeManagement.Models;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
-using System.Collections.Generic;
 
 namespace EmployeeManagement.Test.Controllers
 {
-    public class InternalEmployeeControllerTest
+	public class InternalEmployeeControllerTest
     {
         private readonly InternalEmployeesController _employeesController;
         public InternalEmployeeControllerTest()
@@ -19,8 +18,8 @@ namespace EmployeeManagement.Test.Controllers
             employeeServiceMock.Setup(m => m.FetchInternalEmployeesAsync()).ReturnsAsync(
                 new List<InternalEmployee>() {
                 new InternalEmployee ("Kapil","Khubchandani",1,200,true,1),
-                new InternalEmployee ("Mala","Khubchandani",1,200,true,1),
-                new InternalEmployee ("Mala","Kapil",1,200,true,1)
+                new InternalEmployee ("Rahul","Tiwari",1,200,true,1),
+                new InternalEmployee ("Sachin","Tendulkar",1,200,true,1)
                 });
 
             //var mapperMock = new Mock<IMapper>();

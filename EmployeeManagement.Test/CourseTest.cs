@@ -4,7 +4,7 @@ namespace EmployeeManagement.Test
 {
     public class CourseTest
     {
-        [Fact]
+        [Fact]        
         public void CourseConstructor_Constructor_IsNewMustBeTrue() 
         {
             var course = new Course("XUnitTest");
